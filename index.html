@@ -1,0 +1,217 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DCC Energy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Roboto:wght@700&display=swap" rel="stylesheet"> <!-- Importação das fontes -->
+    <style>
+        body {
+            font-family: 'Oswald', sans-serif; /* Usando Oswald Medium para o corpo */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1ca50d, #6a0dad);
+            color: #ffffff;
+            transition: all 0.5s ease;
+        }
+
+        .container {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.5s ease;
+        }
+
+        .logo {
+            max-width: 150px;
+            margin: 0 auto 20px;
+        }
+
+        h1 {
+            font-family: 'Roboto', sans-serif; /* Usando Roboto Bold para o título */
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px auto;
+            padding: 12px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #1ca50d;
+            text-decoration: none;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button img {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .button:hover {
+            background-color: #148a0b;
+        }
+
+        .button:active {
+            transform: scale(0.95); /* Efeito de clique */
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: transparent;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            transition: transform 0.5s ease;
+        }
+
+        .theme-toggle:focus {
+            outline: none;
+        }
+
+        /* Estilos para o modo escuro */
+        .dark-mode body {
+            background: linear-gradient(135deg, #1ca50d, #6a0dad);
+            color: #ffffff;
+        }
+
+        .dark-mode .container {
+            background-color: #000000;
+        }
+
+        .dark-mode h1 {
+            color: #ffffff;
+        }
+
+        .dark-mode .button {
+            background-color: #6a0dad;
+        }
+
+        .dark-mode .button:hover {
+            background-color: #520a94;
+        }
+
+        /* Estilos para o modo claro */
+        .light-mode body {
+            background: linear-gradient(135deg, #1ca50d, #6a0dad);
+            color: #000000;
+        }
+
+        .light-mode .container {
+            background-color: #ffffff;
+        }
+
+        .light-mode h1 {
+            color: #000000;
+        }
+
+        .light-mode .button {
+            background-color: #388e3c;
+        }
+
+        .light-mode .button:hover {
+            background-color: #2c6e2f;
+        }
+
+        /* Animação de rotação do container (360 graus, mais devagar) */
+        @keyframes rotateContainer {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .rotate-container {
+            animation: rotateContainer 1.5s ease forwards;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="Imagen/logo.png" alt="Logo da DCC Energy" class="logo">
+        <h1 id="title">Bem-vindo à DCC Energy</h1>
+        <a href="https://www.dccenergy.com.br" class="button" target="_blank" onclick="handleButtonClick(event, 'https://www.dccenergy.com.br')">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/domain.png" alt="Ícone do site">
+            Acesse o Site
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=br.com.dccenergy.app&hl=pt_BR" class="button" target="_blank" onclick="handleButtonClick(event, 'https://play.google.com/store/apps/details?id=br.com.dccenergy.app&hl=pt_BR')">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/google-play.png" alt="Ícone do Android">
+            Baixar App para Android
+        </a>
+        <a href="https://apps.apple.com/br/app/dcc-energy/id6447991108" class="button" target="_blank" onclick="handleButtonClick(event, 'https://apps.apple.com/br/app/dcc-energy/id6447991108')">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/mac-os.png" alt="Ícone do iOS">
+            Baixar App para iOS
+        </a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf6P7Z28yfpTRIAXfET5azQjdwjxvHdkaPW5wVl1NLQvKa_uQ/viewform" class="button" target="_blank" onclick="handleButtonClick(event, 'https://docs.google.com/forms/d/e/1FAIpQLSf6P7Z28yfpTRIAXfET5azQjdwjxvHdkaPW5wVl1NLQvKa_uQ/viewform')">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/document.png" alt="Ícone do formulário">
+            Preencher Formulário
+        </a>
+    </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <span id="theme-icon">☀️</span> <!-- Sol emoji atualizado -->
+    </button>
+
+    <script>
+        // Alterna entre o tema claro e escuro
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+
+            // Adiciona a classe de tema correspondente
+            if (currentTheme === 'dark') {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                document.getElementById('theme-icon').innerText = '🌙';  // Lua para modo escuro
+            } else {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                document.getElementById('theme-icon').innerText = '☀️';  // Sol para modo claro
+            }
+
+            // Adiciona animação de rotação ao container (360 graus, mais devagar)
+            const container = document.querySelector('.container');
+            container.classList.add('rotate-container');
+
+            // Remove a animação de rotação após ela terminar
+            setTimeout(() => {
+                container.classList.remove('rotate-container');
+            }, 1500);
+        }
+
+        // Função para animar o botão ao clicar
+        function handleButtonClick(event, url) {
+            event.preventDefault();  // Impede o link de ser seguido imediatamente
+            const button = event.target.closest('.button'); // Encontrar o botão clicado
+            button.style.transform = 'scale(0.95)'; // Animação de clique (efeito de reduzir)
+
+            // Espera a animação terminar antes de redirecionar
+            setTimeout(() => {
+                window.location.href = url; // Muda a página após a animação
+            }, 300);  // Tempo correspondente à animação de clique
+        }
+    </script>
+</body>
+</html>
